@@ -131,6 +131,34 @@ public sealed class FleetServiceTests
         Assert.False(accepted);
     }
 
+    // The inspection should accept an energy user exactly at the configured limit.
+    [Fact]
+    public void Technical_inspection_accepts_item_at_exactly_energy_limit()
+    {
+        var inspection = new TechnicalInspectionService();
+
+        var accepted = inspection.Approves(new ChargingStation("CH-002", 10m));
+
+        Assert.True(accepted);
+    }
+
+    // A new fleet should report zero daily energy use.
+    [Fact]
+    public void Daily_energy_consumption_is_zero_on_empty_fleet()
+    {
+        var service = CreateService(new FakeInspectionService(_ => true));
+
+        Assert.Equal(0m, service.GetDailyEnergyConsumptionKwh());
+    }
+
+    // Rental vehicles must reject beginner scores outside the allowed range.
+    [Fact]
+    public void Rental_vehicle_rejects_beginner_friendliness_out_of_range()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(
+            () => new Scooter("SC-002", beginnerFriendliness: 0));
+    }
+
     // The app should accept an item typed by the user and show the new reports.
     [Fact]
     public void Console_application_adds_user_item_and_shows_updated_report()
