@@ -39,7 +39,7 @@ Daily energy consumption: 5.6 kWh
 
 ## Tests and code coverage
 
-Run the eleven unit tests:
+Run the fourteen unit tests:
 
 ```bash
 dotnet test tests/VyshKat.Tests/VyshKat.Tests.csproj
@@ -51,7 +51,7 @@ Measure coverage with Coverlet:
 dotnet test tests/VyshKat.Tests/VyshKat.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
 ```
 
-Verification: all 11 tests pass. Measured coverage is **81.09% line, 73.86% branch, and 94.59% method**, above the 60% line-coverage benchmark. To reproduce from the 'hw1-vyshkat' directory:
+Verification: all 14 tests pass. Measured coverage is **83.19% line, 77.27% branch, and 94.59% method**, above the 60% line-coverage benchmark. To reproduce from the 'hw1-vyshkat' directory:
 
 ```bash
 #Test + coverege report
